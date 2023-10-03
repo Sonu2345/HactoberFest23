@@ -1,0 +1,5 @@
+- Write Codes in Java only
+- Only Array or String related Programs are accepted
+- Make sure the code works perfectly otherwise not accepted
+- No Hardcoding
+- Comment each steps for better understanding 
