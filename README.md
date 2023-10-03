@@ -11,3 +11,4 @@ Steps For Contribution:
 3. Add a file
 4. commit the code
 5. Make pull request
+I will accept only 1 PR per day so Kindly send only 1 . Don't Spam :)
