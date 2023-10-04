@@ -5,7 +5,7 @@ Rules To Contribute To This Repo
 Use any language.
 C, C++, JAVA, Data Structure and Algorithms, HTML, CSS.
 Anything valuable.
-I will accept only 1 PR per day per user so Kindly send only 1 . Don't Spam :)
+**I will accept only 1 PR per day per user so Kindly send only 1 . Don't Spam :)**
 Steps For Contribution: 
 1. Fork this repo
 2. Star this repo
