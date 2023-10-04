@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class SwitchCase2 {
+    // Simple Calculator--
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your first number :");
+        int a = sc.nextInt();
+
+        System.out.println("Enter your second number :");
+        int b = sc.nextInt();
+
+        System.out.println("Which Operation you want to do :");
+        char op = sc.next().charAt(0);
+
+        switch (op) {
+            case '+':
+                System.out.printf("Addition of a and b is  %d", a + b);
+                System.out.printf("\n");
+                break;
+            case '-':
+                System.out.printf("Subtraction of a and b is %d", a - b);
+                System.out.println("\n");
+                break;
+
+            case '*':
+                System.out.printf("Multiplication of a and b is %d", a * b);
+                System.out.printf("\n");
+                break;
+            case '/':
+                System.out.printf("Division of a and b is %d", a / b);
+                System.out.printf("\n");
+                break;
+
+            case '%':
+                System.out.printf("Mod is %d", a % b);
+                System.out.printf("\n");
+                break;
+
+            default:
+                System.out.println("Invalid Operator");
+        }
+        sc.close();
+    }
+}
