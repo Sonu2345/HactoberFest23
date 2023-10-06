@@ -1,3 +1,4 @@
+package Java;
 public class transformtosum {
     static class Node {
         int data;

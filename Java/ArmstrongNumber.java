@@ -4,7 +4,7 @@
  * For example, 
  * 153=1^3+5^3+3^3
  */
-
+package Java;
 import java.util.Scanner;
 
 public class ArmstrongNumber

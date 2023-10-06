@@ -2,8 +2,8 @@
 The next permutation of an array of integers is the next lexicographically greater permutation. If such arrangement is not possible, the array must be rearranged as the lowest possible order (in ascending order).
 Given an array of integers nums[], find the next permutation of nums.
 */
-
-public void nextPermutation(int[] nums)
+package Java;
+public static void nextPermutation(int[] nums)
 {
     int ind1=-1;
     int ind2=-1;
