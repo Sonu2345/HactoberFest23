@@ -1,7 +1,7 @@
 
 //This is binary search implementation on user defined input which has a time complexity of O(log n).
 //Hope this helps.
-
+package Java;
 
 import java.util.*;
 public class binarysearch{

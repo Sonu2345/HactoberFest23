@@ -1,10 +1,10 @@
 // Ques: Given a, b and c such that (a | X) & (b | X) = c; find minimum value of X which satisfies this condition. If no value of X is possible return -1;
 
 
-
+package Java;
 import java.util.*;
 
-public class Solution {
+public class FindMinimumValueOfX {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     int a = sc.nextInt();
