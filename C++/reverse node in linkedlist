@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+class node{
+    public:
+    int val;
+    node *next;
+};
+node *newnode(int val){
+   node *head=new node;
+   head->val=val;
+   head->next=NULL;
+   return head;
+    
+}
+node *reverse(node *head){
+    node*curr=head,*prev=NULL,*future=NULL;
+        while(curr!=NULL){
+             future=curr->next;
+             curr->next=prev;
+            prev=curr;
+            curr=future;
+         }
+         return prev;
+}
+void print(node *head){
+    node *curr=head;
+    while(curr!=NULL){
+        cout<<curr->val;
+        curr=curr->next;
+    }
+}
+int main() {
+    int n;
+    cin>>n;
+    int data;
+    cin>>data;
+    node *head=newnode(data);
+    node *tail=head;
+    for(int i=0;i<n;i++){
+        cin>>data;
+        tail->next=newnode(data);
+        tail=tail->next;
+    }
+    head=reverse(head);
+    
+    print(head);
+    cout<<endl;
+	return 0;
+}
