@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "console": "externalTerminal",
+      "cwd": "c:/Users/ASUS/OneDrive/Desktop/HactoberFest23-1",
+      "program": "c:/Users/ASUS/OneDrive/Desktop/HactoberFest23-1/build/Debug/outDebug"
+    }
+  ]
+}
