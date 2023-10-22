@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <title>Music Player</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            background-color: #131312;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        header{
+            width: 85%;
+            height: 95%;
+            /* border: 1px solid #fff; */
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+        .menu_side, .song_side{
+position: relative;
+width: 25%;
+height: 90%;
+/* border: 1px solid #fff; */
+background-color: #111727;
+box-shadow: 5px 0px 2px #090f1f;
+        }
+        .song_side{
+            width: 75%;
+            background-color: #0b1320;
+        }
+        .master_play{
+            width: 100%;
+            height: 10%;
+            background-color: #111727;
+            box-shadow: 0px 3px 8px #090f1f;
+        }
+        .menu_side h1{
+            font-size: 20px;
+            margin: 15px 0px 0px 20px;
+            font-weight: 500;
+            color: #fff;
+        }
+        .menu_side .playlist{
+            margin: 40px 0px 0px 20px;
+        }
+        .menu_side .playlist h4{
+            font-size: 14px;
+            font-weight: 400;
+            padding-bottom: 10px;
+            color: #4c5262;
+            transition: .3s linear;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+          .menu_side .playlist h4:hover{
+        color: #fff;
+        }
+        .menu_side .playlist h4 span{
+        position: relative;
+        margin-right: 35px;
+        }
+        .menu_side .playlist h4 span::before{
+       content: "";
+       position: absolute;
+       width: 4px;
+       height:4px ; 
+
+border: 2px solid #4c5262; 
+border-radius: 50%;
+transition: .3s linear;
+}
+
+ .menu_side .playlist h4:hover span::before{
+      border: 2px solid #fff; 
+}
+.menu_side .playlist h4 .bi{
+      display: none;
+}
+.menu_side .playlist  .active{
+     color: #36e2ec;
+}
+.menu_side .playlist  .active span{
+     display: none;
+}
+.menu_side .playlist  .active .bi{
+     display: flex;
+     margin-right: 20px;
+}
+.menu_song{
+    width: 100%;
+    height: 300px;
+    /* border: 1px solid #fff; */
+    margin-top: 40px;
+
+}
+.menu_song li{
+    list-style-type: none;
+    color: #fff;
+    padding: 5px 0px 5px 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+bottom: 2px;
+cursor: pointer;
+transition: .3s linear;
+}
+.menu_song li:hover{
+    background: rgb(105, 105, 175,.1);
+}
+.menu_song li span{
+   font-size: 12px;
+   font-weight: 600;
+   color: #4c5262;
+}
+.menu_song li img{
+    width: 32px;
+    height: 32px;
+    margin-left: 25px;
+}
+.menu_song li h5{
+    font-size: 11px;
+    margin-left: 15px;
+}
+.menu_song li h5 .subtitle{
+    font-size: 10px;
+    color: #4c5262;
+}
+.menu_song li .bi{
+    position: absolute;
+    right: 15px;
+    top: 9px;
+    font-size: 16px;
+}
+header .master_play{
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+}
+header .master_play .wave{
+    width: 30px;
+    height: 30px;
+    /* border: 1px solid #fff; */
+    padding-bottom: 5px;
+display: flex;
+align-items: flex-end;
+margin-right: 10px;
+}
+header .master_play .wave .wave1{
+    width: 3px;
+    height: 10px;
+    margin-right: 3px;
+    border-radius: 10px 10px 0px 0px;
+    background-color: #36e2ec;
+   
+}
+.animate{
+    animation: wave 0.5s linear infinite;
+}
+header .master_play .wave .wave1:nth-child(2){
+    height: 13px;
+     animation-delay: .4s;
+     
+} 
+header .master_play .wave .wave1:nth-child(3){
+    height: 8px;
+    animation-delay: .8s; 
+    
+}
+/* js class wave */
+header .master_play .active2 .wave1{
+  animation-delay: .2s;
+}
+header .master_play .active2 .wave1:nth-child(2){
+   
+    animation-delay: .4s;
+}
+header .master_play .active2 .wave1:nth-child(3){
+  
+    animation-delay: .8s;
+}
+@keyframes wave{
+    0%{
+        height: 10px;
+    }
+    50%{
+        height: 15px;
+    }
+    100%{
+        height: 10px;
+    }
+}
+header .master_play img{
+    width: 35px;
+    height: 35px;
+}
+header .master_play h5{
+    width: 130px;
+    font-size: 13px;
+    margin-left: 15px;
+    color: #fff;
+    line-height: 15px;
+}
+header .master_play h5 .subtitle{
+   font-size: 11px;
+   color: #4c5262;
+}
+header .master_play .icon{
+   font-size: 20px;
+   width: 140px;
+   color: #fff;
+   margin: 0px 30px 0px 20px;
+}
+header .master_play .icon .bi{
+   cursor: pointer;
+   outline: none;
+}
+header .master_play .icon .bi:nth-child(2){
+   border: 1px solid rgb(105, 105, 175,.1);
+   border-radius: 50%;
+   padding: 1px 3px 0px 6px;
+   margin: 0px 5px;
+   transition: 0.3s linear;
+}
+header .master_play span{
+    color: #fff;
+    width: 32px;
+    font-size: 11px;
+    font-weight: 400;
+}
+header .master_play  #current_start{
+margin: 0px 0px 0px 20px;
+}
+header .master_play .bar{
+    position: relative;
+    width: 43%;
+    height: 2px;
+    background-color: rgb(105, 105, 175,.1);
+    margin: 0px 15px 0px 10px;
+}
+header .master_play .bar .bar2{
+    position: absolute;
+    background: #36e2ec;
+    width: 0%;
+    height: 100%;
+    top: 0;
+}
+header .master_play .bar  .dot{
+position: absolute;
+width: 5px;
+height: 5px;
+background-color: #36e2ec;
+border-radius: 50%;
+left: 0%;
+top: -1px;
+transition: 1s linear;
+}
+header .master_play .bar  .dot::before{
+    content: '';
+position: absolute;
+width: 15px;
+height: 15px;
+border:1px solid #36e2ec;
+border-radius: 50%;
+left: -6px;
+top: -6px;
+box-sizing: inset 0px 0px 3px #36e2ec;
+}
+header .master_play .bar  input{
+   
+position: absolute;
+width: 100%;
+top: -6px;
+left: 0;
+cursor: pointer;
+z-index: 99999999;
+transition: 3s linear;
+opacity: 0;
+}
+header .master_play .vol {
+   
+position: relative;
+width: 100px;
+height: 2px;
+margin-left: 50px;
+background: rgb(105, 105, 175,.1);
+}
+header .master_play .vol .bi{
+    color: #fff;
+    position: absolute;
+    font-size: 25px;
+    top: -17px;
+    left: -30px;
+}
+header .master_play .vol  input{
+   
+position: absolute;
+width: 100%;
+top: -10px;
+left: 0;
+cursor: pointer;
+z-index: 99999999;
+transition: 3s linear;
+opacity: 0;
+}
+header .master_play .vol .vol_bar{
+    position: absolute;
+    background: #36e2ec;
+    width: 0%;
+    height: 100%;
+    top: 0;
+}
+header .master_play .vol .dot{
+position: absolute;
+width: 5px;
+height: 5px;
+background-color: #36e2ec;
+border-radius: 50%;
+left: 0%;
+top: -1px;
+transition: 1s linear;
+}
+header .master_play .vol  .dot::before{
+    content: '';
+position: absolute;
+width: 15px;
+height: 15px;
+border:1px solid #36e2ec;
+border-radius: 50%;
+left: -6px;
+top: -6px;
+box-sizing: inset 0px 0px 3px #36e2ec;
+}
+header .song_side{
+    z-index: 2;
+}
+header .song_side::before{
+    content: '';
+    position: absolute;
+    margin: 0;
+    width: 30%;
+    height: 400px;
+    background: url('download-removebg-preview.png');
+    background-repeat: no-repeat;
+   
+    left: 54%;
+    top: 0;
+    z-index: -1;
+}
+header .song_side nav{
+   width: 90%;
+   height: 10%;
+   /* border: 1px solid #fff; */
+   overflow: hidden;
+   margin: auto;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+} 
+header .song_side nav ul{
+    display: flex;
+}
+header .song_side nav ul li{
+    position: relative;
+    list-style-type: none;
+    font-size: 13px;
+    color: #4c5262;
+    margin-right: 25px;
+    cursor: pointer
+    ;transition: .3s linear;
+}
+header .song_side nav ul li:hover{
+    color: #fff;
+}
+header .song_side nav ul li:nth-child(1){
+color: #fff;
+
+}
+header .song_side nav ul li span{
+    position: absolute;
+    width: 100%;
+    height: 2.5px;
+    background: #36e2ec;
+    bottom: -5px;
+    left: 0;
+    border-radius: 20px;
+}
+header .song_side nav .search{
+    position: relative;
+    width: 40%;
+    padding: 1px 10px;
+    border-radius: 20px;
+    color: grey;
+    right: 20px;
+    
+}
+header .song_side nav .search::before{
+    content: '';
+    position: absolute;
+width: 100%;
+height: 100%;
+border-radius: 20px;
+background-color: rgb(184, 184, 184,.1);
+backdrop-filter: blur(5px);
+z-index: -1;
+}
+header .song_side nav .search .bi{
+    font-size: 13px;
+    padding: 3px 0px 0px 10px;
+
+}
+header .song_side nav .search input{
+   background: none;
+   outline: none;
+   border: none;
+    padding: 0px 10px;
+    color: #fff;
+font-size: 12px;
+}
+.content{
+    /* border: 1px solid #fff; */
+    width: 100%;
+    height: 40%;
+    /* margin: auto; */
+    padding-top: 20px;
+}
+.content h1{
+color: #fff;
+font-size: 25px;
+font-weight: 600;
+}
+.content h3{
+    color: #4c5262;
+    font-size: 15px;
+    font-weight: 250;
+    width: 60%;
+}
+.content .btn{
+    background-color: #36e2ec;
+     height: 30px;
+    width: 20%;
+     margin-top: 20px;
+     border-radius: 20px;
+     color: #fff;
+     cursor: pointer;
+     
+}
+.content .btn:hover{
+    background-color: #fff;
+    color: black;
+
+}
+.content button{
+    border-radius: 20px;
+   margin-top: 20px;
+    height: 30px;
+    width: 20%;
+    border: 2px solid #36e2ec;
+   color: black;
+   transition: .3s linear;
+   cursor: pointer;
+}
+.content button:hover{
+    background-color: #36e2ec;
+    color: #fff;
+}
+.pop_song{
+    
+    
+    width: 90%;
+    height: auto;
+    margin: auto;
+    border: 1px solid #fff;
+    margin-top: 15px;
+    color: #fff;
+}
+.pop_song .h4{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.pop_song .h4 .bi{
+    color: #a4a8b4;
+    cursor: pointer;
+    transition: .3s linear;
+}
+.pop_song .h4 .bi:hover{
+    color: #fff;
+}
+.popu_song{
+    width: 100%;
+    height: 150px;
+    margin-top: 15px;
+    display: flex;
+}
+.popu_song li{
+    min-width: 100px;
+    height: 140px;
+    list-style-type: none;
+    margin-right: 10px;
+    transition: .3s linear;
+}
+.popu_song li:hover{
+    background: rgb(105, 105, 170,.1);
+}
+.popu_song li .img_play{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+.fam{
+    position: absolute;
+    top: 60%;
+    /* border: 1px solid #fff; */
+    height: 170px;
+    width: 100%;
+
+}
+.fam h1{
+    color: red;
+}
+.fam .btns{
+    left: 93%;
+    position: absolute;
+    top: 0;
+}
+.fam .btns #left,#right{
+    color: grey;
+    transition: .3s linear;
+}
+.fam .btns #left,#right:hover{
+    color: #fff;
+}
+.one{
+position: absolute;
+height: 120px;
+width: 20%;
+border: 2px solid black;
+top: 33px;
+left: 1%;
+overflow: hidden;
+}
+.one img{
+   
+width: 100%;
+height: 120px;
+}
+.two{
+position: absolute;
+height: 120px;
+width: 20%;
+border: 2px solid #fff;
+top: 33px;
+left: 25%;
+overflow: hidden;
+}
+.two img{
+    width: 100%;
+    height: 120px;
+}
+.three{
+position: absolute;
+height: 120px;
+width: 20%;
+border: 2px solid #fff;
+top: 33px;
+left: 50%;
+overflow: hidden;
+}
+.three img{
+    width: 100%;
+    height: 120px;
+}
+.four{
+position: absolute;
+height: 120px;
+width: 20%;
+border: 2px solid #fff;
+top: 33px;
+left: 75%;
+overflow: hidden;
+}
+.four img{
+    width: 100%;
+    height: 120px;
+}
+#pause{
+    display: none;
+}
+    </style>
+</head>
+<body>
+    <header>
+<div class="menu_side">
+    <h1>PlayList</h1>
+    <div class="playlist">
+        <h4 class="active"><span></span><i class="bi bi-music-note-beamed"></i>PlayList</h4>
+         <h4><span></span><i class="bi bi-music-note-beamed"></i>Last Listening</h4>
+          <h4><span></span><i class="bi bi-music-note-beamed"></i>Recommended</h4>
+    </div>
+    <div class="menu_song">
+        <li class="songitem"><span>01</span>
+        <img src="maxresdefault.jpg" alt="Alan">
+        <h5>LILY
+            <div class="subtitle">Alan Walker</div>
+           </h5>  <i class="bi playlistplay bi-play-circle-fill" id="one" onclick="play()"></i>
+           <i class="bi bi-pause-circle" id="pause" onclick="remove(this)"></i>
+        
+        
+        </li>
+
+         <li class="songitem"><span>02</span>
+        <img src="maxresdefault.jpg" alt="Alan">
+        <h5>LILY
+            <div class="subtitle">Alan Walker</div>
+            </h5> <i class="bi playlistplay bi-play-circle-fill" id="2"></i>
+        
+        
+        </li>
+
+         <li class="songitem"><span>03</span>
+        <img src="maxresdefault.jpg" alt="Alan">
+        <h5>LILY
+            <div class="subtitle">Alan Walker</div>
+            </h5> <i class="bi playlistplay bi-play-circle-fill" id="3"></i>
+       
+        
+        </li>
+
+         <li class="songitem"><span>04</span>
+        <img src="maxresdefault.jpg" alt="Alan">
+        <h5>LILY
+            <div class="subtitle">Alan Walker</div>
+            </h5> <i class="bi playlistplay bi-play-circle-fill" id="4"></i>
+        
+        
+        </li>
+
+         <li class="songitem"><span>05</span>
+        <img src="maxresdefault.jpg" alt="Alan">
+        <h5>LILY
+            <div class="subtitle">Alan Walker</div>
+             </h5><i class="bi playlistplay bi-play-circle-fill" id="5"></i>
+       
+        
+        </li>
+    </div>
+</div>
+<div class="song_side">
+    <nav>
+<ul>
+    <li>Discover<span></span></li>
+    <li>Library</li>
+    <li>Radio</li>
+    
+</ul>
+<div class="search">
+    <i class="bi bi-search"></i>
+    <input type="text" placeholder="Search Music...">
+</div>
+
+    </nav>
+    <div class="content">
+   <h1>Alan Walker Fade</h1>
+   <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex expedita, accusamus, dolorem voluptatibus quos, perspiciatis explicabo quas impedit hic fuga non iure velit autem magni possimus. Consectetur aut vel voluptatem.</h3>
+   <div class="buttons">
+    <button class="btn">PLAY</button>
+      <button>FOLLOW</button>
+   </div>
+  <div class="fam">
+    <h1>Popular Songs</h1>
+        <div class="btns">
+            <i id="left" class="bi bi-arrow-left-short"></i>
+            <i id="right" class="bi bi-arrow-right-short"></i>
+        </div>
+        <div class="one"><img src="maxresdefault (1).jpg"></div>
+ <div class="two"><img src="download.jpeg"></div>
+         <div class="three"><img src="maxresdefault.jpg"></div>
+          <div class="four"><img src="maxresdefault (2).jpg"></div>
+          
+        </div>
+          
+    </div>
+    
+   </div>
+ 
+</div>
+</div>
+<div class="master_play">
+    <div class="wave">
+         <div class="wave1"></div>
+          <div class="wave1"></div>
+           <div class="wave1"></div>
+    </div>
+    <img src="maxresdefault.jpg" alt="Alan">
+     <h5>LILY<br>
+            <div class="subtitle">Alan Walker</div>
+        </h5>
+        <div class="icon">
+            <i class="bi bi-skip-start-fill"></i>
+              <i class="bi bi-play-fill"></i>
+        <i class="bi bi-skip-end-fill"></i>
+      
+        </div>
+        <span id="current_start">0:00</span>
+        <div class="bar">
+            <input type="range" name="range" id="seek" min="0" value="0" max="100">
+            <div class="bar2" id="bar2"></div>
+            <div class="dot"></div>
+        </div>
+        <span id="current_end">0:00</span>
+        <div class="vol">
+            <i class="bi bi-volume-down-fill" ></i>
+             <input type="range" name="range" id="vol" min="0" value="30" max="100">
+              <div class="vol_bar"></div>
+            <div class="dot" id="vol_dot"></div>
+        </div>
+</div>
+<audio id="ok" src="audio.mp3"></audio>
+    </header>
+    
+</body>
+</html>
+<script>
+   function play(){
+    var ad = document.getElementById("ok");
+    ad.play();
+
+     document.getElementById('pause')
+                    .style.display = "block";
+
+                     document.getElementById('one')
+                    .style.display = "none";
+ 
+                    wave=document.querySelector('.wave');
+                    wave.classList.add('animate');
+ 
+   }
+  function remove() {
+  var element = document.getElementById("ok");
+  element.remove();
+
+ document.getElementById('one')
+                    .style.display = "block";
+
+                     document.getElementById('pause')
+                    .style.display = "none";  
+}
+</script>
