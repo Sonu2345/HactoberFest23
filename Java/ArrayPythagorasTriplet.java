@@ -1,7 +1,9 @@
+import java.util.Arrays;
+
 public class ArrayPythagorasTriplet {
 
     public static void main(String[] args) {
-        int[] arr = {3, 1, 4, 6, 5};
+        int[] arr = { 3, 1, 4, 6, 5 };
         System.out.println(isPythagorasTripletExists(arr) ? "TRUE" : "FALSE");
     }
 
